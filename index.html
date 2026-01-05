@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalender</title>
+    <link rel="stylesheet" href="dearflip/dflip/css/dflip.min.css">
+    <link rel="stylesheet" href="dearflip/dflip/css/themify-icons.min.css">
+</head>
+<body>
+<div id="flipbookImageContainer"></div>
+<div id="flipbookPDFContainer"></div>
+<script src="dearflip/dflip/js/libs/jquery.min.js"></script>
+<script src="dearflip/dflip/js/dflip.min.js"></script>
+<script>
+    const urlParams = new URLSearchParams(location.search),
+        now = new Date(),
+        tahun = urlParams.get('tahun') || now.getFullYear(),
+        bulan = urlParams.get('bulan') || now.getMonth() + 1,
+        filena = `pdf/${tahun}.pdf`
+
+    let option_pdf = {
+        openPage: parseInt(bulan) + 1,
+        soundEnable: false,
+        pageMode: 1,
+        singlePageMode: 2,
+        bookType: 2,
+        disableFlipByClick: true,
+        enableClickToFlip: false,
+        hard: "all",
+    };
+
+    $("#flipbookPDFContainer").flipBook(filena, option_pdf);
+</script>
+</body>
+</html>
